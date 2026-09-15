@@ -1,0 +1,28 @@
+# Build output
+/aws-login
+build/
+dist/
+
+# Editors / tooling
+.idea/
+__pycache__/
+venv/
+.python-version
+
+# Local and private files — never commit
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+.mcp.json
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+private/
+.private/
+sessions/
+.sessions/
+*.session
+.DS_Store

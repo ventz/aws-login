@@ -1,0 +1,22 @@
+name: "Builds"
+on: [ push ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Clear workspace (for self-hosted)"
+        run: rm -fr $GITHUB_WORKSPACE/*
+
+      - uses: "actions/checkout@v4"
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: 'go.mod'
+          cache: true
+
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          args: build --clean --snapshot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
